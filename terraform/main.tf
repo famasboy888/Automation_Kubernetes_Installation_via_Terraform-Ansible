@@ -59,7 +59,7 @@ resource "openstack_compute_instance_v2" "master" {
 
 
   provisioner "local-exec" {
-    command = "echo 'Waiting for SSH to be ready"
+    command = "echo 'Waiting for SSH to be ready'"
 
     connection {
       type        = "ssh"
@@ -91,7 +91,7 @@ resource "openstack_compute_instance_v2" "worker" {
 
 
   provisioner "local-exec" {
-    command = "echo 'Waiting for SSH to be ready"
+    command = "echo 'Waiting for SSH to be ready'"
 
     connection {
       type        = "ssh"

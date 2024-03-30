@@ -1,0 +1,14 @@
+- name: Copy custom script to home directory
+  copy:
+    src: files/install_kubernets.sh
+    dest: /home/debian/install_kubernets.sh
+    owner: debian
+    group: debian
+    mode: '0744'
+
+- name: Execute shell script for Kubernetes
+  script: install_kubernets.sh
+  register: outputShell
+  
+- debug: var=outputShell.stdout_lines
+

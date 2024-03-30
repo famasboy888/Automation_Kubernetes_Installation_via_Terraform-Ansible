@@ -1,0 +1,23 @@
+- name: Copy custom script to home directory
+  copy:
+    src: files/install_kubernets_2.sh
+    dest: /home/debian/install_kubernets_2.sh
+    owner: debian
+    group: debian
+    mode: '0744'
+
+- name: Execute shell script for Kubernetes
+  script: install_kubernets_2.sh
+  register: outputShell2
+
+- debug: var=outputShell2.stdout_lines
+
+- name: Get Kubeadm generated Token
+  command: "sudo kubeadm token create --print-join-command"
+  register: outputShell3
+
+- name: Copy the token to a local file
+  copy:
+    content: "{{ outputShell3.stdout }}"
+    dest: "roles/worker/files/join_kube.sh"
+  delegate_to: localhost

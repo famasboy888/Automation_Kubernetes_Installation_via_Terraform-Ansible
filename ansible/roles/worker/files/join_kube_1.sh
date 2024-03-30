@@ -1,0 +1,1 @@
+kubeadm join 192.168.2.238:6443 --token kqdc2x.3zdiupvdfns5fuyn --discovery-token-ca-cert-hash sha256:49042800f22095f28151d2a2e8483af32259e8dd5e16fa6733947b2a82e62b77  --cri-socket /run/cri-dockerd.sock
