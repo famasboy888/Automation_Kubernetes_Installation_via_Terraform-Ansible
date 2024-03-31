@@ -39,6 +39,11 @@ success=false
 # Steps
 # Run Terraform and deploy instances
 
+# Remove known hosts
+echo "Removing known hosts to avoid conflicting hosts."
+sudo rm ~/.ssh/known_hosts
+
+
 terraform -chdir=terraform/ init
 terraform -chdir=terraform/ plan
 terraform -chdir=terraform/ apply -auto-approve
