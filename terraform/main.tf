@@ -49,7 +49,7 @@ resource "openstack_compute_instance_v2" "master" {
   image_id        = var.image_id
   flavor_id       = openstack_compute_flavor_v2.instance-flavor.id
   key_pair        = var.key_pair
-  security_groups = ["${var.security_groups}","kube-sg"]
+  security_groups = ["${var.security_groups}","kube-sg","http"]
   # This is used for making dependability
   tags = [openstack_networking_subnet_v2.ext-subnet.id]
 
@@ -80,7 +80,7 @@ resource "openstack_compute_instance_v2" "worker" {
   image_id        = var.image_id
   flavor_id       = openstack_compute_flavor_v2.instance-flavor.id
   key_pair        = var.key_pair
-  security_groups = ["${var.security_groups}","kube-sg"]
+  security_groups = ["${var.security_groups}","kube-sg","http"]
   count           = var.instance_worker_count
   # This is used for making dependability
   tags = [openstack_networking_subnet_v2.ext-subnet.id]
